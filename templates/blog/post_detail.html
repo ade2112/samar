@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Post Title | Blog | Samar Craft{% endblock %}
+
+{% block content %}
+<article class="section-padding">
+    <div class="container">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <header style="margin-bottom: 4rem; text-align: center;">
+                <h4
+                    style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
+                    Published on Jan 26, 2026</h4>
+                <h1 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 2rem;">Placeholder Blog Post Title</h1>
+                <p style="font-size: 1.3rem; color: var(--light-text); font-style: italic;">A brief excerpt or summary
+                    of the blog post content will appear here to engage the reader.</p>
+            </header>
+
+            <img src="{% static 'images/hero.png' %}" alt="Blog Featured Image"
+                style="width: 100%; height: 600px; object-fit: cover; margin-bottom: 4rem;">
+
+            <div class="blog-content" style="font-size: 1.1rem; line-height: 1.8;">
+                <p>Content of the blog post will be rendered here dynamically from the database. We support markdown or
+                    rich text depending on the configuration.</p>
+                <!-- Dynamic content goes here -->
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}

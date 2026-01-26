@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'leads'
 ]
 
+SITE_ID = 1
+
 
 
 MIDDLEWARE = [
