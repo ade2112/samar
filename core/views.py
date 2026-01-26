@@ -8,3 +8,6 @@ def about(request):
 
 def contact(request):
     return render(request, 'core/contact.html')
+
+def testimonials(request):
+    return render(request, 'core/testimonials.html')

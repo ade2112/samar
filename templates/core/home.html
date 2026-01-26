@@ -1,33 +1,154 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Home - Samar Construction{% endblock %}
+{% block title %}Home | Samar Craft - Exclusive Natural Stone Artistry{% endblock %}
 
 {% block content %}
-<section class="hero"
-    style="padding: 4rem 0; text-align: center; background: #eee; border-radius: 8px; margin-top: 2rem;">
-    <h1>Welcome to Samar Construction</h1>
-    <p>Providing high-quality construction services and product visibility.</p>
-    <a href="{% url 'core:contact' %}"
-        style="display: inline-block; padding: 10px 20px; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 5px; margin-top: 1rem;">Get
-        a Quote</a>
+<!-- Hero Section -->
+<section class="hero-section"
+    style="position: relative; height: 90vh; display: flex; align-items: center; justify-content: center; overflow: hidden; margin: 0 -5vw;">
+    <img src="{% static 'images/hero.png' %}" alt="Luxury Stone Art"
+        style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+    <div
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 0;">
+    </div>
+    <div class="text-center" style="position: relative; z-index: 1; color: #fff; max-width: 800px; padding: 0 20px;">
+        <h4 style="text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 1.5rem; font-size: 0.9rem;">
+            Exclusive Natural Stone and Mineral Artistry</h4>
+        <h1 style="font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 2rem;">Elevate Interiors with
+            Exquisite Stone Creations</h1>
+        <p style="font-size: 1.1rem; margin-bottom: 2.5rem; font-weight: 300; opacity: 0.9;">Discover our premium
+            handcrafted stone sculptures and mineral art panels designed to elevate luxury interiors with unparalleled
+            elegance.</p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center;">
+            <a href="{% url 'core:contact' %}" class="btn btn-primary"
+                style="background: #fff; color: #000; border-color: #fff;">Discover More</a>
+            <a href="#" class="btn btn-outline" style="border-color: #fff; color: #fff;">Our Collection</a>
+        </div>
+    </div>
 </section>
 
-<section class="previews"
-    style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-    <div class="card" style="padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px;">
-        <h3>Our Services</h3>
-        <p>Explore our wide range of professional construction services.</p>
-        <a href="#" style="color: var(--primary-color);">Learn More &rarr;</a>
+<!-- Collection Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 5rem;">
+            <h4
+                style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
+                Curated Collection</h4>
+            <h2 style="font-size: 2.5rem;">Luxury Stone Décor</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem;">
+            <div class="lux-card">
+                <img src="{% static 'images/amethyst_bowl.png' %}" alt="Amethyst Decorative Bowl">
+                <div style="padding: 2rem 0;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                        <h3 style="margin: 0; font-size: 1.4rem;">Amethyst Decorative Bowl</h3>
+                        <span style="color: var(--accent-color); font-weight: 500;">$700.00</span>
+                    </div>
+                    <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">Handcrafted from
+                        premium amethyst, this decorative bowl adds a touch of natural brilliance to any surface.</p>
+                    <a href="#"
+                        style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; text-decoration: none; color: var(--primary-color); border-bottom: 1px solid var(--accent-color); padding-bottom: 4px;">Explore
+                        details</a>
+                </div>
+            </div>
+
+            <div class="lux-card">
+                <img src="{% static 'images/art_panel.png' %}" alt="Mineral Art Panel">
+                <div style="padding: 2rem 0;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                        <h3 style="margin: 0; font-size: 1.4rem;">Mineral Art Panel</h3>
+                        <span style="color: var(--accent-color); font-weight: 500;">$3,200.00</span>
+                    </div>
+                    <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">A stunning wall
+                        installation featuring polished mineral cross-sections, creating a focal point of natural art.
+                    </p>
+                    <a href="#"
+                        style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; text-decoration: none; color: var(--primary-color); border-bottom: 1px solid var(--accent-color); padding-bottom: 4px;">Explore
+                        details</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card" style="padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px;">
-        <h3>Recent Projects</h3>
-        <p>Take a look at our successfully completed projects across the region.</p>
-        <a href="#" style="color: var(--primary-color);">View Projects &rarr;</a>
+</section>
+
+<!-- Mission/Transform Section -->
+<section style="background: var(--section-bg); padding: 10rem 0;">
+    <div class="container">
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); gap: 6rem; align-items: center;">
+            <div>
+                <h4
+                    style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1.5rem;">
+                    Our Craft</h4>
+                <h2 style="font-size: 3rem; margin-bottom: 2rem; line-height: 1.2;">Transform Your Interiors with
+                    Exquisite Artistry</h2>
+                <p style="color: var(--light-text); font-size: 1.1rem; margin-bottom: 2.5rem;">At Samar Craft, we are
+                    dedicated to creating unique natural stone and mineral décor that enriches luxury interiors. Our
+                    passion lies in blending artistry with premium materials to elevate homes, offices, and hotels
+                    through bespoke sculptures and installations.</p>
+                <a href="{% url 'core:about' %}" class="btn btn-primary">Our Story</a>
+            </div>
+            <div style="position: relative;">
+                <img src="{% static 'images/hero.png' %}" alt="Craftsmanship"
+                    style="width: 100%; height: 600px; object-fit: cover; box-shadow: 40px 40px 0 var(--bg-color);">
+            </div>
+        </div>
     </div>
-    <div class="card" style="padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px;">
-        <h3>Latest News</h3>
-        <p>Stay updated with our latest blog posts and industry insights.</p>
-        <a href="#" style="color: var(--primary-color);">Read Blog &rarr;</a>
+</section>
+
+<!-- Inspiration Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 5rem;">
+            <h4
+                style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
+                Inspiration</h4>
+            <h2 style="font-size: 2.5rem;">Expert Insights & Stories</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            <div class="lux-card">
+                <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
+                    <img src="{% static 'images/art_panel.png' %}" alt="Blog Post" style="height: 100%;">
+                </div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">The Aesthetic Power of Natural Stone in Modern
+                    Spaces</h3>
+                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">Discover how
+                    incorporating natural elements can transform minimalist designs into warm, luxury hubs...</p>
+                <a href="#"
+                    style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary-color); border-bottom: 1px solid #ccc; text-decoration: none; padding-bottom: 4px;">Read
+                    Article</a>
+            </div>
+
+            <div class="lux-card">
+                <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
+                    <img src="{% static 'images/amethyst_bowl.png' %}" alt="Blog Post" style="height: 100%;">
+                </div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Exploring the World of Artisan Mineral Creations
+                </h3>
+                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">A deep dive into the
+                    sourcing and sculpting process of our most exclusive amethyst collections...</p>
+                <a href="#"
+                    style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary-color); border-bottom: 1px solid #ccc; text-decoration: none; padding-bottom: 4px;">Read
+                    Article</a>
+            </div>
+
+            <div class="lux-card">
+                <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
+                    <img src="{% static 'images/hero.png' %}" alt="Blog Post" style="height: 100%;">
+                </div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Custom Stone Sculpture Exhibition</h3>
+                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">Join us for an exclusive
+                    showcase of our latest bespoke installations designed for distinctive spaces...</p>
+                <a href="#"
+                    style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary-color); border-bottom: 1px solid #ccc; text-decoration: none; padding-bottom: 4px;">Read
+                    Article</a>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

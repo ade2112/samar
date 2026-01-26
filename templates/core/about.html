@@ -1,15 +1,125 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}About Us - Samar Construction{% endblock %}
+{% block title %}About Us | Samar Craft - Premium Stone and Mineral Artistry{% endblock %}
 
 {% block content %}
-<section style="padding: 2rem 0;">
-    <h1>About Samar Construction</h1>
-    <p>Samar Construction is a leading firm dedicated to excellence in the construction industry. With years of
-        experience and a team of skilled professionals, we deliver top-tier results for our clients.</p>
-    <h2>Our Mission</h2>
-    <p>To provide sustainable and high-quality construction solutions that exceed client expectations.</p>
-    <h2>Our Vision</h2>
-    <p>To be the most trusted and innovative construction partner in the region.</p>
+<!-- About Hero -->
+<section class="section-padding text-center" style="background: var(--section-bg); margin: 0 -5vw; padding: 10rem 0;">
+    <div class="container">
+        <h4
+            style="text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent-color); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Our Story</h4>
+        <h1 style="font-size: clamp(2.5rem, 4vw, 3.5rem); max-width: 900px; margin: 0 auto 2rem;">Premium Natural Stone
+            and Mineral Décor</h1>
+        <p style="font-size: 1.2rem; color: var(--light-text); max-width: 800px; margin: 0 auto;">At Samar Craft, our
+            décor collection is shaped by natural stone and traditional craftsmanship. We celebrate the natural texture,
+            weight, and individuality of stone.</p>
+    </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="section-padding">
+    <div class="container">
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); gap: 6rem; align-items: center;">
+            <div>
+                <img src="{% static 'images/about_process.png' %}" alt="Crafting Process"
+                    style="width: 100%; height: 500px; object-fit: cover;">
+            </div>
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Exquisite Stone and Mineral Artistry</h2>
+                <p style="color: var(--light-text); font-size: 1.1rem; margin-bottom: 1.5rem;">From sculpted stone
+                    clocks and ambient table lamps to hand-finished plates, each product is designed to elevate luxury
+                    interiors. Using marble, onyx, granite, and river stones, we craft pieces that are as unique as the
+                    minerals they are made from.</p>
+                <div style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">01. Excellence</h4>
+                        <p style="font-size: 0.9rem; color: var(--light-text);">Meticulous attention to every detail in
+                            our sculpting process.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">02. Innovation</h4>
+                        <p style="font-size: 0.9rem; color: var(--light-text);">Blending traditional stones with modern
+                            artistic vision.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section style="background: var(--section-bg); padding: 8rem 0;">
+    <div class="container text-center">
+        <h4
+            style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
+            The Artisans</h4>
+        <h2 style="font-size: 2.5rem; margin-bottom: 4rem;">Exquisite Stone and Mineral Artistry</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem;">
+            <div class="lux-card">
+                <div style="height: 350px; background: #eee; margin-bottom: 1.5rem;">
+                    <!-- Placeholder for Aarav -->
+                    <div
+                        style="width: 100%; height: 100%; background: #ccc; display: flex; align-items: center; justify-content: center; font-family: serif; font-size: 5rem; color: #fff;">
+                        A</div>
+                </div>
+                <h3>Aarav Patel</h3>
+                <p
+                    style="color: var(--accent-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                    Master Sculptor</p>
+            </div>
+            <div class="lux-card">
+                <div style="height: 350px; background: #eee; margin-bottom: 1.5rem;">
+                    <!-- Placeholder for Maya -->
+                    <div
+                        style="width: 100%; height: 100%; background: #ddd; display: flex; align-items: center; justify-content: center; font-family: serif; font-size: 5rem; color: #fff;">
+                        M</div>
+                </div>
+                <h3>Maya Singh</h3>
+                <p
+                    style="color: var(--accent-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                    Lead Designer</p>
+            </div>
+            <div class="lux-card">
+                <div style="height: 350px; background: #eee; margin-bottom: 1.5rem;">
+                    <!-- Placeholder for Liam -->
+                    <div
+                        style="width: 100%; height: 100%; background: #bbb; display: flex; align-items: center; justify-content: center; font-family: serif; font-size: 5rem; color: #fff;">
+                        L</div>
+                </div>
+                <h3>Liam Chen</h3>
+                <p
+                    style="color: var(--accent-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                    Artisanal Manager</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Crafting Timeless Elegance -->
+<section class="section-padding">
+    <div class="container text-center">
+        <h2 style="font-size: 3rem; margin-bottom: 4rem;">Crafting Timeless Elegance for Discerning Spaces</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Elevating Interiors</h3>
+                <p style="color: var(--light-text);">Using premium natural stone to create focal points that define the
+                    character of luxury homes and hotels.</p>
+            </div>
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Aesthetic Excellence</h3>
+                <p style="color: var(--light-text);">Mastering the balance between raw organic mineral beauty and
+                    refined artistic form in every custom creation.</p>
+            </div>
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Signature Ambiance</h3>
+                <p style="color: var(--light-text);">Enhancing the atmosphere of bespoke spaces with signature pieces
+                    that capture the essence of earth’s artistry.</p>
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}
