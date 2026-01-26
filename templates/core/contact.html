@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - Samar Construction{% endblock %}
+
+{% block content %}
+<section style="padding: 2rem 0;">
+    <h1>Contact Us</h1>
+    <p>Have a question or need a quote? Reach out to us using the form below or via WhatsApp.</p>
+
+    <div style="max-width: 600px; margin-top: 2rem;">
+        <form action="#" method="post" style="display: grid; gap: 1rem;">
+            {% csrf_token %}
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" style="width: 100%; padding: 8px;" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" style="width: 100%; padding: 8px;">
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" style="width: 100%; padding: 8px;" required></textarea>
+            </div>
+            <button type="submit"
+                style="padding: 10px; background: var(--primary-color); color: #fff; border: none; border-radius: 5px; cursor: pointer;">Send
+                Message</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

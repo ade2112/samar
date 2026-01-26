@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Samar Construction{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #004a99;
+            --secondary-color: #f4f4f4;
+            --accent-color: #ff9900;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Basic Styles for Navbar/Footer */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+            z-index: 1000;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    {% include 'partials/navbar.html' %}
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'partials/footer.html' %}
+
+    <a href="https://wa.me/2340000000000" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

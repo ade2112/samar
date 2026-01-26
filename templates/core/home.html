@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Samar Construction{% endblock %}
+
+{% block content %}
+<section class="hero"
+    style="padding: 4rem 0; text-align: center; background: #eee; border-radius: 8px; margin-top: 2rem;">
+    <h1>Welcome to Samar Construction</h1>
+    <p>Providing high-quality construction services and product visibility.</p>
+    <a href="{% url 'core:contact' %}"
+        style="display: inline-block; padding: 10px 20px; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 5px; margin-top: 1rem;">Get
+        a Quote</a>
+</section>
+
+<section class="previews"
+    style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+    <div class="card" style="padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px;">
+        <h3>Our Services</h3>
+        <p>Explore our wide range of professional construction services.</p>
+        <a href="#" style="color: var(--primary-color);">Learn More &rarr;</a>
+    </div>
+    <div class="card" style="padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px;">
+        <h3>Recent Projects</h3>
+        <p>Take a look at our successfully completed projects across the region.</p>
+        <a href="#" style="color: var(--primary-color);">View Projects &rarr;</a>
+    </div>
+    <div class="card" style="padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px;">
+        <h3>Latest News</h3>
+        <p>Stay updated with our latest blog posts and industry insights.</p>
+        <a href="#" style="color: var(--primary-color);">Read Blog &rarr;</a>
+    </div>
+</section>
+{% endblock %}
