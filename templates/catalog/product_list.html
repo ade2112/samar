@@ -12,8 +12,8 @@
             style="margin: 0 0.5rem; padding: 0.5rem 1rem; border: 1px solid var(--primary-color); border-radius: 4px; text-decoration: none; color: var(--text-color);">All</a>
         {% for category in categories %}
         <a href="{% url 'catalog:product_list' %}?category={{ category.slug }}"
-            style="margin: 0 0.5rem; padding: 0.5rem 1rem; border: 1px solid var(--primary-color); border-radius: 4px; text-decoration: none; color: var(--text-color);">{{
-            category.name }}</a>
+            style="margin: 0 0.5rem; padding: 0.5rem 1rem; border: 1px solid var(--primary-color); border-radius: 4px; text-decoration: none; color: var(--text-color);">
+            {{category.name }}</a>
         {% endfor %}
     </div>
     {% endif %}
@@ -37,8 +37,8 @@
             <div style="padding: 1.5rem;">
                 <h3 style="margin-bottom: 0.5rem;">{{ product.name }}</h3>
                 {% if product.category %}
-                <p style="color: var(--primary-color); font-size: 0.9rem; margin-bottom: 0.5rem;">{{
-                    product.category.name }}</p>
+                <p style="color: var(--primary-color); font-size: 0.9rem; margin-bottom: 0.5rem;">
+                    {{ product.category.name }}</p>
                 {% endif %}
                 <p style="color: #666; margin-bottom: 1rem;">{{ product.short_description }}</p>
                 {% if product.price_note %}
