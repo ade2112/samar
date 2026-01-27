@@ -107,47 +107,39 @@
             <h4
                 style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
                 Inspiration</h4>
-            <h2 style="font-size: 2.5rem;">Expert Insights & Stories</h2>
+            <h2 style="font-size: 2.5rem;">Latest Insights & Stories</h2>
         </div>
 
+        {% if latest_posts %}
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            {% for post in latest_posts %}
             <div class="lux-card">
                 <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
-                    <img src="{% static 'images/art_panel.png' %}" alt="Blog Post" style="height: 100%;">
+                    {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    {% else %}
+                    <img src="{% static 'images/art_panel.png' %}" alt="Blog Post"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    {% endif %}
                 </div>
-                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">The Aesthetic Power of Natural Stone in Modern
-                    Spaces</h3>
-                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">Discover how
-                    incorporating natural elements can transform minimalist designs into warm, luxury hubs...</p>
-                <a href="#"
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">{{ post.title }}</h3>
+                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">{{
+                    post.excerpt|truncatewords:20 }}</p>
+                <a href="{% url 'blog:post_detail' post.slug %}"
                     style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary-color); border-bottom: 1px solid #ccc; text-decoration: none; padding-bottom: 4px;">Read
                     Article</a>
             </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center" style="padding: 3rem 0;">
+            <p style="color: var(--light-text);">No blog posts available yet. Check back soon!</p>
+        </div>
+        {% endif %}
 
-            <div class="lux-card">
-                <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
-                    <img src="{% static 'images/amethyst_bowl.png' %}" alt="Blog Post" style="height: 100%;">
-                </div>
-                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Exploring the World of Artisan Mineral Creations
-                </h3>
-                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">A deep dive into the
-                    sourcing and sculpting process of our most exclusive amethyst collections...</p>
-                <a href="#"
-                    style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary-color); border-bottom: 1px solid #ccc; text-decoration: none; padding-bottom: 4px;">Read
-                    Article</a>
-            </div>
-
-            <div class="lux-card">
-                <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
-                    <img src="{% static 'images/hero.png' %}" alt="Blog Post" style="height: 100%;">
-                </div>
-                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Custom Stone Sculpture Exhibition</h3>
-                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">Join us for an exclusive
-                    showcase of our latest bespoke installations designed for distinctive spaces...</p>
-                <a href="#"
-                    style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary-color); border-bottom: 1px solid #ccc; text-decoration: none; padding-bottom: 4px;">Read
-                    Article</a>
-            </div>
+        <div class="text-center" style="margin-top: 4rem;">
+            <a href="{% url 'blog:post_list' %}" class="btn btn-outline">View All Posts</a>
         </div>
     </div>
 </section>

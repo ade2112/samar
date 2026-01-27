@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Post Title | Blog | Samar Craft{% endblock %}
+{% block title %}{{ post.title }} | Blog | Samar Construction{% endblock %}
 
 {% block content %}
 <article class="section-padding">
@@ -10,19 +10,27 @@
             <header style="margin-bottom: 4rem; text-align: center;">
                 <h4
                     style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
-                    Published on Jan 26, 2026</h4>
-                <h1 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 2rem;">Placeholder Blog Post Title</h1>
-                <p style="font-size: 1.3rem; color: var(--light-text); font-style: italic;">A brief excerpt or summary
-                    of the blog post content will appear here to engage the reader.</p>
+                    Published on {{ post.published_at|date:"F d, Y" }}</h4>
+                <h1 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 2rem;">{{ post.title }}</h1>
+                {% if post.excerpt %}
+                <p style="font-size: 1.3rem; color: var(--light-text); font-style: italic;">{{ post.excerpt }}</p>
+                {% endif %}
             </header>
 
+            {% if post.featured_image %}
+            <img src="{{ post.featured_image.url }}" alt="{{ post.title }}"
+                style="width: 100%; height: 600px; object-fit: cover; margin-bottom: 4rem;">
+            {% else %}
             <img src="{% static 'images/hero.png' %}" alt="Blog Featured Image"
                 style="width: 100%; height: 600px; object-fit: cover; margin-bottom: 4rem;">
+            {% endif %}
 
             <div class="blog-content" style="font-size: 1.1rem; line-height: 1.8;">
-                <p>Content of the blog post will be rendered here dynamically from the database. We support markdown or
-                    rich text depending on the configuration.</p>
-                <!-- Dynamic content goes here -->
+                {{ post.content|linebreaks }}
+            </div>
+
+            <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee; text-align: center;">
+                <a href="{% url 'blog:post_list' %}" class="btn btn-outline">← Back to Blog</a>
             </div>
         </div>
     </div>
