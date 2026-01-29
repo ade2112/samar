@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us | Samar Craft - Seamless Connection for Artistry{% endblock %}
+
+{% block content %}
+<!-- Contact Header -->
+<section class="section-padding text-center" style="background: var(--section-bg); margin: 0 -5vw; padding: 8rem 0;">
+    <div class="container">
+        <h4
+            style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
+            Get in Touch</h4>
+        <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;">Contact</h1>
+        <p style="font-size: 1.1rem; color: var(--light-text); max-width: 600px; margin: 0 auto;">Find our office
+            locations, direct phone lines, and email contacts here for seamless connection.</p>
+    </div>
+</section>
+
+<!-- Contact Details & Form -->
+<section class="section-padding">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); gap: 6rem;">
+            <!-- Offices & Info -->
+            <div>
+                <div style="margin-bottom: 4rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Our Locations</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h4
+                                style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--accent-color);">
+                                Headquarters</h4>
+                            <p style="color: var(--light-text); font-size: 0.95rem;">Lot 33070, No Tiang 1/12, Taman
+                                Mewah,<br>Jalan Kemboja, 31000 Batu Gajah, Perak.</p>
+                        </div>
+                        <div>
+                            <h4
+                                style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--accent-color);">
+                                Customer Service</h4>
+                            <p style="color: var(--light-text); font-size: 0.95rem;">Available via WhatsApp and
+                                Email<br>9 AM - 6 PM Daily</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 4rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Direct Contacts</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">+60 16-5301357</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">+60 12-6657491</p>
+                    <p style="font-size: 1.2rem; color: var(--accent-color); text-decoration: underline;">
+                        samarconstruction67@gmail.com</p>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Follow Our Artistry</h3>
+                    <div style="display: flex; gap: 1.5rem; font-size: 1.5rem;">
+                        <a href="#" style="color: var(--primary-color);"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: var(--primary-color);"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: var(--primary-color);"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Send a Message</h3>
+                <form action="#" method="post" style="display: grid; gap: 2rem;">
+                    {% csrf_token %}
+                    <div>
+                        <label
+                            style="display: block; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; font-weight: 500;">Your
+                            Name</label>
+                        <input type="text" name="name"
+                            style="width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 10px 0; outline: none; font-family: inherit;"
+                            placeholder="Full Name">
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; font-weight: 500;">Email
+                            Address</label>
+                        <input type="email" name="email"
+                            style="width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 10px 0; outline: none; font-family: inherit;"
+                            placeholder="email@example.com">
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; font-weight: 500;">Message</label>
+                        <textarea name="message" rows="4"
+                            style="width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 10px 0; outline: none; font-family: inherit; resize: none;"
+                            placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

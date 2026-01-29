@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog | Samar Craft - Insights & Stories{% endblock %}
+
+{% block content %}
+<section class="section-padding" style="background: var(--section-bg); margin: 0 -5vw; padding: 6rem 0;">
+    <div class="container text-center">
+        <h4
+            style="text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent-color); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Inspiration</h4>
+        <h1 style="font-size: 3.5rem; margin-bottom: 2rem;">Our Blog</h1>
+        <p style="font-size: 1.1rem; color: var(--light-text); max-width: 700px; margin: 0 auto;">Discover expert
+            insights and captivating stories about premium stone and mineral décor, crafted for luxury spaces.</p>
+    </div>
+</section>
+
+<section class="section-padding">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 4rem;">
+            <!-- Blog posts will be rendered here dynamically later -->
+            <div class="lux-card">
+                <div style="height: 300px; background: #eee; margin-bottom: 2rem;">
+                    <img src="{% static 'images/art_panel.png' %}" alt="Placeholder"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Placeholder Blog Post</h3>
+                <p style="color: var(--light-text); margin-bottom: 2rem;">This is a placeholder for your first blog
+                    post. You can start adding real posts from the Django Admin once we implement the views.</p>
+                <a href="#" class="btn btn-outline" style="font-size: 0.75rem;">Read More</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
