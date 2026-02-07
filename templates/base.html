@@ -6,134 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Samar Craft | Exclusive Stone Artistry{% endblock %}</title>
+    <meta name="description"
+        content="{% block meta_description %}Premium handcrafted natural stone sculptures, mineral art panels, and luxury interior décor by Samar Craft.{% endblock %}">
+    <meta name="keywords"
+        content="{% block meta_keywords %}natural stone, mineral art, luxury decor, interior design, stone sculptures, samar craft{% endblock %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title"
+        content="{% block og_title %}{{ self.title|default:'Samar Craft | Exclusive Stone Artistry' }}{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}Elevate your interiors with exquisite natural stone creations.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'images/hero.png' %}{% endblock %}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #1a1a1a;
-            --accent-color: #c5a059;
-            /* Gold accent */
-            --bg-color: #ffffff;
-            --text-color: #1a1a1a;
-            --light-text: #666666;
-            --section-bg: #f9f9f9;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            line-height: 1.8;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        .font-serif {
-            font-family: 'Playfair Display', serif;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1400px;
-            margin: auto;
-        }
-
-        header {
-            background: #fff;
-            border-bottom: 1px solid #eee;
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1001;
-        }
-
-        footer {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 5rem 0 2rem 0;
-            margin-top: 5rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 32px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            border: 1px solid var(--primary-color);
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--primary-color);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: #fff;
-        }
-
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 28px;
-            line-height: 55px;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .section-padding {
-            padding: 8rem 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .lux-card {
-            background: #fff;
-            border: none;
-            transition: transform 0.4s ease;
-        }
-
-        .lux-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .lux-card img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-    </style>
     {% block extra_css %}{% endblock %}
 </head>
 
@@ -146,7 +41,7 @@
 
     {% include 'partials/footer.html' %}
 
-    <a href="https://wa.me/60165301357" class="whatsapp-btn" target="_blank">
+    <a href="https://wa.me/{{ whatsapp_number }}" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 

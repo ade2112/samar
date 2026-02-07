@@ -39,39 +39,88 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem;">
+            {% for product in featured_products %}
             <div class="lux-card">
-                <img src="{% static 'images/amethyst_bowl.png' %}" alt="Amethyst Decorative Bowl">
-                <div style="padding: 2rem 0;">
+                <div style="height: 300px; margin-bottom: 2rem; overflow: hidden; position: relative;">
+                    {% if product.get_primary_image %}
+                    <img src="{{ product.get_primary_image.image.url }}" alt="{{ product.name }}"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    {% else %}
                     <div
-                        style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                        <h3 style="margin: 0; font-size: 1.4rem;">Amethyst Decorative Bowl</h3>
-                        <span style="color: var(--accent-color); font-weight: 500;">$700.00</span>
+                        style="width: 100%; height: 100%; background: #ddd; display: flex; align-items: center; justify-content: center;">
+                        <span style="color: #888;">No Image</span>
                     </div>
-                    <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">Handcrafted from
-                        premium amethyst, this decorative bowl adds a touch of natural brilliance to any surface.</p>
-                    <a href="#"
-                        style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; text-decoration: none; color: var(--primary-color); border-bottom: 1px solid var(--accent-color); padding-bottom: 4px;">Explore
-                        details</a>
+                    {% endif %}
                 </div>
-            </div>
-
-            <div class="lux-card">
-                <img src="{% static 'images/art_panel.png' %}" alt="Mineral Art Panel">
-                <div style="padding: 2rem 0;">
+                <div style="padding: 0 0 2rem 0;">
                     <div
                         style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                        <h3 style="margin: 0; font-size: 1.4rem;">Mineral Art Panel</h3>
-                        <span style="color: var(--accent-color); font-weight: 500;">$3,200.00</span>
+                        <h3 style="margin: 0; font-size: 1.4rem;">{{ product.name }}</h3>
+                        {% if product.price_note %}
+                        <span style="color: var(--accent-color); font-weight: 500;">{{ product.price_note }}</span>
+                        {% endif %}
                     </div>
-                    <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">A stunning wall
-                        installation featuring polished mineral cross-sections, creating a focal point of natural art.
+                    <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        {{ product.short_description }}
                     </p>
-                    <a href="#"
+                    <a href="{% url 'catalog:product_detail' product.slug %}"
                         style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; text-decoration: none; color: var(--primary-color); border-bottom: 1px solid var(--accent-color); padding-bottom: 4px;">Explore
                         details</a>
                 </div>
             </div>
+            {% empty %}
+            <div class="text-center" style="grid-column: 1 / -1;">
+                <p>No featured products available at the moment.</p>
+            </div>
+            {% endfor %}
         </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section style="background: #f9f9f9; padding: 5rem 0;">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 4rem;">
+            <h4
+                style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
+                Our Portfolio</h4>
+            <h2 style="font-size: 2.5rem;">Featured Projects</h2>
+        </div>
+
+        {% if latest_projects %}
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem;">
+            {% for project in latest_projects %}
+            <div class="lux-card">
+                <div style="height: 300px; margin-bottom: 1.5rem; overflow: hidden; position: relative;">
+                    {% if project.get_primary_image %}
+                    <img src="{{ project.get_primary_image.image.url }}" alt="{{ project.title }}"
+                        style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                    {% else %}
+                    <div
+                        style="width: 100%; height: 100%; background: #ddd; display: flex; align-items: center; justify-content: center;">
+                        <span style="color: #888;">No Image</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">{{ project.title }}</h3>
+                {% if project.location %}
+                <p style="color: var(--accent-color); font-size: 0.9rem; margin-bottom: 1rem;">{{ project.location }}
+                </p>
+                {% endif %}
+                <p style="color: var(--light-text); font-size: 0.95rem; margin-bottom: 1.5rem;">{{ project.summary }}
+                </p>
+                <a href="{% url 'portfolio:project_detail' project.slug %}"
+                    style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--primary-color); text-decoration: none; border-bottom: 1px solid var(--accent-color); padding-bottom: 4px;">View
+                    Project</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center" style="margin-top: 4rem;">
+            <a href="{% url 'portfolio:project_list' %}" class="btn btn-outline">View All Projects</a>
+        </div>
+        {% else %}
+        <p style="text-align: center; color: #666;">No featured projects to display.</p>
+        {% endif %}
     </div>
 </section>
 
@@ -107,47 +156,40 @@
             <h4
                 style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
                 Inspiration</h4>
-            <h2 style="font-size: 2.5rem;">Expert Insights & Stories</h2>
+            <h2 style="font-size: 2.5rem;">Latest Insights & Stories</h2>
         </div>
 
+        {% if latest_posts %}
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            {% for post in latest_posts %}
             <div class="lux-card">
                 <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
-                    <img src="{% static 'images/art_panel.png' %}" alt="Blog Post" style="height: 100%;">
+                    {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    {% else %}
+                    <img src="{% static 'images/art_panel.png' %}" alt="Blog Post"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    {% endif %}
                 </div>
-                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">The Aesthetic Power of Natural Stone in Modern
-                    Spaces</h3>
-                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">Discover how
-                    incorporating natural elements can transform minimalist designs into warm, luxury hubs...</p>
-                <a href="#"
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">{{ post.title }}</h3>
+                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                    {{ post.excerpt|truncatewords:20 }}
+                </p>
+                <a href="{% url 'blog:post_detail' post.slug %}"
                     style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary-color); border-bottom: 1px solid #ccc; text-decoration: none; padding-bottom: 4px;">Read
                     Article</a>
             </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center" style="padding: 3rem 0;">
+            <p style="color: var(--light-text);">No blog posts available yet. Check back soon!</p>
+        </div>
+        {% endif %}
 
-            <div class="lux-card">
-                <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
-                    <img src="{% static 'images/amethyst_bowl.png' %}" alt="Blog Post" style="height: 100%;">
-                </div>
-                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Exploring the World of Artisan Mineral Creations
-                </h3>
-                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">A deep dive into the
-                    sourcing and sculpting process of our most exclusive amethyst collections...</p>
-                <a href="#"
-                    style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary-color); border-bottom: 1px solid #ccc; text-decoration: none; padding-bottom: 4px;">Read
-                    Article</a>
-            </div>
-
-            <div class="lux-card">
-                <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
-                    <img src="{% static 'images/hero.png' %}" alt="Blog Post" style="height: 100%;">
-                </div>
-                <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Custom Stone Sculpture Exhibition</h3>
-                <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">Join us for an exclusive
-                    showcase of our latest bespoke installations designed for distinctive spaces...</p>
-                <a href="#"
-                    style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--primary-color); border-bottom: 1px solid #ccc; text-decoration: none; padding-bottom: 4px;">Read
-                    Article</a>
-            </div>
+        <div class="text-center" style="margin-top: 4rem;">
+            <a href="{% url 'blog:post_list' %}" class="btn btn-outline">View All Posts</a>
         </div>
     </div>
 </section>
