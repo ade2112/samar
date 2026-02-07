@@ -75,6 +75,53 @@
     </div>
 </section>
 
+<!-- Featured Projects Section -->
+<section style="background: #f9f9f9; padding: 5rem 0;">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 4rem;">
+            <h4
+                style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1rem;">
+                Our Portfolio</h4>
+            <h2 style="font-size: 2.5rem;">Featured Projects</h2>
+        </div>
+
+        {% if latest_projects %}
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem;">
+            {% for project in latest_projects %}
+            <div class="lux-card">
+                <div style="height: 300px; margin-bottom: 1.5rem; overflow: hidden; position: relative;">
+                    {% if project.get_primary_image %}
+                    <img src="{{ project.get_primary_image.image.url }}" alt="{{ project.title }}"
+                        style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                    {% else %}
+                    <div
+                        style="width: 100%; height: 100%; background: #ddd; display: flex; align-items: center; justify-content: center;">
+                        <span style="color: #888;">No Image</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">{{ project.title }}</h3>
+                {% if project.location %}
+                <p style="color: var(--accent-color); font-size: 0.9rem; margin-bottom: 1rem;">{{ project.location }}
+                </p>
+                {% endif %}
+                <p style="color: var(--light-text); font-size: 0.95rem; margin-bottom: 1.5rem;">{{ project.summary }}
+                </p>
+                <a href="{% url 'portfolio:project_detail' project.slug %}"
+                    style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--primary-color); text-decoration: none; border-bottom: 1px solid var(--accent-color); padding-bottom: 4px;">View
+                    Project</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center" style="margin-top: 4rem;">
+            <a href="{% url 'portfolio:project_list' %}" class="btn btn-outline">View All Projects</a>
+        </div>
+        {% else %}
+        <p style="text-align: center; color: #666;">No featured projects to display.</p>
+        {% endif %}
+    </div>
+</section>
+
 <!-- Mission/Transform Section -->
 <section style="background: var(--section-bg); padding: 10rem 0;">
     <div class="container">
