@@ -13,21 +13,18 @@
             <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
                 <div>
                     <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">📞 Phone</h3>
-                    <p><a href="tel:+60165301357" style="color: var(--primary-color); text-decoration: none;">+60
-                            16-5301357</a></p>
-                    <p><a href="tel:+60126657491" style="color: var(--primary-color); text-decoration: none;">+60
-                            12-6657491</a></p>
+                    <p><a href="tel:{{ company_phone_clean }}"
+                            style="color: var(--primary-color); text-decoration: none;">{{ company_phone }}</a></p>
                 </div>
                 <div>
                     <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">✉️ Email</h3>
-                    <p><a href="mailto:samarconstruction67@gmail.com"
-                            style="color: var(--primary-color); text-decoration: none;">samarconstruction67@gmail.com</a>
+                    <p><a href="mailto:{{ company_email }}"
+                            style="color: var(--primary-color); text-decoration: none;">{{ company_email }}</a>
                     </p>
                 </div>
                 <div>
                     <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">📍 Address</h3>
-                    <p style="color: #666;">Lot 33070, No Tiang 1/12, Taman Mewah,<br>Jalan Kemboja, 31000 Batu Gajah,
-                        Perak.</p>
+                    <p style="color: #666;">{{ company_address }}</p>
                 </div>
             </div>
         </div>

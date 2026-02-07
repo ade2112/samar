@@ -21,7 +21,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'samarconstruction67@gmail.com'
+EMAIL_HOST_USER = 'samarcrafts.marketing@gmail.com'
 # For security, these should be environment variables in production
 # But user requested this setup for now
 EMAIL_HOST_PASSWORD = 'your_app_password_here'  # User needs to replace this
@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.company_info',
             ],
         },
     },
