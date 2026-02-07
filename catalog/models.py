@@ -39,6 +39,10 @@ class Product(models.Model):
     
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('catalog:product_detail', args=[self.slug])
     
     def get_primary_image(self):
         """Get the primary image or the first image"""

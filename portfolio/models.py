@@ -23,6 +23,10 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('portfolio:project_detail', args=[self.slug])
+
     def get_primary_image(self):
         primary = self.images.filter(is_primary=True).first()
         if primary:
