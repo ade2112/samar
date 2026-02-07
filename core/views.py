@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from blog.models import Post
 from portfolio.models import Project
+from catalog.models import Product
 from leads.forms import ContactForm
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -9,9 +10,13 @@ from django.conf import settings
 def home(request):
     latest_posts = Post.objects.filter(status='PUBLISHED').order_by('-published_at')[:3]
     latest_projects = Project.objects.filter(is_active=True).order_by('-completed_date')[:3]
+    # Featured products (limit to 2 for the homepage layout)
+    featured_products = Product.objects.filter(is_active=True).order_by('-created_at')[:2]
+    
     return render(request, 'core/home.html', {
         'latest_posts': latest_posts,
-        'latest_projects': latest_projects
+        'latest_projects': latest_projects,
+        'featured_products': featured_products
     })
 
 def about(request):

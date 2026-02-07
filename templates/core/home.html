@@ -39,38 +39,39 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem;">
+            {% for product in featured_products %}
             <div class="lux-card">
-                <img src="{% static 'images/amethyst_bowl.png' %}" alt="Amethyst Decorative Bowl">
-                <div style="padding: 2rem 0;">
+                <div style="height: 300px; margin-bottom: 2rem; overflow: hidden; position: relative;">
+                    {% if product.get_primary_image %}
+                    <img src="{{ product.get_primary_image.image.url }}" alt="{{ product.name }}"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    {% else %}
+                    <div
+                        style="width: 100%; height: 100%; background: #ddd; display: flex; align-items: center; justify-content: center;">
+                        <span style="color: #888;">No Image</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div style="padding: 0 0 2rem 0;">
                     <div
                         style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                        <h3 style="margin: 0; font-size: 1.4rem;">Amethyst Decorative Bowl</h3>
-                        <span style="color: var(--accent-color); font-weight: 500;">$700.00</span>
+                        <h3 style="margin: 0; font-size: 1.4rem;">{{ product.name }}</h3>
+                        {% if product.price_note %}
+                        <span style="color: var(--accent-color); font-weight: 500;">{{ product.price_note }}</span>
+                        {% endif %}
                     </div>
-                    <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">Handcrafted from
-                        premium amethyst, this decorative bowl adds a touch of natural brilliance to any surface.</p>
-                    <a href="#"
+                    <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">{{
+                        product.short_description }}</p>
+                    <a href="{% url 'catalog:product_detail' product.slug %}"
                         style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; text-decoration: none; color: var(--primary-color); border-bottom: 1px solid var(--accent-color); padding-bottom: 4px;">Explore
                         details</a>
                 </div>
             </div>
-
-            <div class="lux-card">
-                <img src="{% static 'images/art_panel.png' %}" alt="Mineral Art Panel">
-                <div style="padding: 2rem 0;">
-                    <div
-                        style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                        <h3 style="margin: 0; font-size: 1.4rem;">Mineral Art Panel</h3>
-                        <span style="color: var(--accent-color); font-weight: 500;">$3,200.00</span>
-                    </div>
-                    <p style="color: var(--light-text); font-size: 0.9rem; margin-bottom: 1.5rem;">A stunning wall
-                        installation featuring polished mineral cross-sections, creating a focal point of natural art.
-                    </p>
-                    <a href="#"
-                        style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; text-decoration: none; color: var(--primary-color); border-bottom: 1px solid var(--accent-color); padding-bottom: 4px;">Explore
-                        details</a>
-                </div>
+            {% empty %}
+            <div class="text-center" style="grid-column: 1 / -1;">
+                <p>No featured products available at the moment.</p>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
