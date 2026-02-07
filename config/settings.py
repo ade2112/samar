@@ -16,10 +16,17 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'samarconstruction67@gmail.com'
+# For security, these should be environment variables in production
+# But user requested this setup for now
+EMAIL_HOST_PASSWORD = 'your_app_password_here'  # User needs to replace this
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-z7*^b9%07kfg3nv+m&)%!2w3qoj5nz!c_g3^3o9w!y!9zg90hh'
 
 # SECURITY WARNING: don't run with debug turned on in production!

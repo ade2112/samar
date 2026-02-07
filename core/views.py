@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import Post
 from portfolio.models import Project
+from leads.forms import ContactForm
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
 
 def home(request):
     latest_posts = Post.objects.filter(status='PUBLISHED').order_by('-published_at')[:3]
@@ -14,7 +18,41 @@ def about(request):
     return render(request, 'core/about.html')
 
 def contact(request):
-    return render(request, 'core/contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            inquiry = form.save()
+            
+            # Send email notification
+            try:
+                subject = f"New Inquiry from {inquiry.name}: {inquiry.subject}"
+                message = f"""
+                You have received a new inquiry from the website.
+                
+                Name: {inquiry.name}
+                Email: {inquiry.email}
+                Phone: {inquiry.phone}
+                Subject: {inquiry.subject}
+                
+                Message:
+                {inquiry.message}
+                """
+                send_mail(
+                    subject,
+                    message,
+                    settings.DEFAULT_FROM_EMAIL,
+                    [settings.EMAIL_HOST_USER], # Send to admin (same as host user for now)
+                    fail_silently=True,
+                )
+                messages.success(request, 'Your message has been sent successfully! We will contact you soon.')
+            except Exception as e:
+                messages.warning(request, 'Your message was saved, but we could not send the email notification.')
+                
+            return redirect('core:contact')
+    else:
+        form = ContactForm()
+        
+    return render(request, 'core/contact.html', {'form': form})
 
 def testimonials(request):
     return render(request, 'core/testimonials.html')
