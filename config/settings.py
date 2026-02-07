@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,18 +22,18 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'samarcrafts.marketing@gmail.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='samarcrafts.marketing@gmail.com')
 # For security, these should be environment variables in production
 # But user requested this setup for now
-EMAIL_HOST_PASSWORD = 'your_app_password_here'  # User needs to replace this
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='your_app_password_here')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-SECRET_KEY = 'django-insecure-z7*^b9%07kfg3nv+m&)%!2w3qoj5nz!c_g3^3o9w!y!9zg90hh'
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-z7*^b9%07kfg3nv+m&)%!2w3qoj5nz!c_g3^3o9w!y!9zg90hh')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
 
 
 # Application definition
@@ -59,6 +60,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,6 +139,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
