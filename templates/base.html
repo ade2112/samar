@@ -6,6 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Samar Craft | Exclusive Stone Artistry{% endblock %}</title>
+    <meta name="description"
+        content="{% block meta_description %}Premium handcrafted natural stone sculptures, mineral art panels, and luxury interior décor by Samar Craft.{% endblock %}">
+    <meta name="keywords"
+        content="{% block meta_keywords %}natural stone, mineral art, luxury decor, interior design, stone sculptures, samar craft{% endblock %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title"
+        content="{% block og_title %}{{ self.title|default:'Samar Craft | Exclusive Stone Artistry' }}{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}Elevate your interiors with exquisite natural stone creations.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'images/hero.png' %}{% endblock %}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
