@@ -8,8 +8,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
+EMAIL_TIMEOUT = config('EMAIL_TIMEOUT', default=20, cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='samarcrafts.marketing@gmail.com')
 # For security, these should be environment variables in production
 # But user requested this setup for now
