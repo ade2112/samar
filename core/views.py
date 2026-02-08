@@ -47,11 +47,13 @@ def contact(request):
                     message,
                     settings.DEFAULT_FROM_EMAIL,
                     [settings.EMAIL_HOST_USER], # Send to admin (same as host user for now)
-                    fail_silently=True,
+                    [settings.EMAIL_HOST_USER], # Send to admin (same as host user for now)
+                    fail_silently=False,
                 )
                 messages.success(request, 'Your message has been sent successfully! We will contact you soon.')
             except Exception as e:
-                messages.warning(request, 'Your message was saved, but we could not send the email notification.')
+                print(f"EMAIL ERROR: {e}")
+                messages.warning(request, f'Your message was saved, but we could not send the email notification. Error: {e}')
                 
             return redirect('core:contact')
     else:
