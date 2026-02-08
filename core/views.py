@@ -28,21 +28,21 @@ def contact(request):
         if form.is_valid():
             inquiry = form.save()
             
-                # Email sending is temporarily disabled due to Render blocking SMTP ports.
-                # Inquiries are saved to the database (Admin panel).
-                # try:
-                #     send_mail(
-                #         subject,
-                #         message,
-                #         settings.DEFAULT_FROM_EMAIL,
-                #         [settings.EMAIL_HOST_USER], # Send to admin (same as host user for now)
-                #         fail_silently=False,
-                #     )
-                # except Exception as e:
-                #     print(f"EMAIL ERROR: {e}")
-                #     # Don't show error to user, just log it.
-                
-                messages.success(request, 'Your message has been sent successfully! We will contact you soon.')
+            # Email sending is temporarily disabled due to Render blocking SMTP ports.
+            # Inquiries are saved to the database (Admin panel).
+            # try:
+            #     send_mail(
+            #         subject,
+            #         message,
+            #         settings.DEFAULT_FROM_EMAIL,
+            #         [settings.EMAIL_HOST_USER], # Send to admin (same as host user for now)
+            #         fail_silently=False,
+            #     )
+            # except Exception as e:
+            #     print(f"EMAIL ERROR: {e}")
+            #     # Don't show error to user, just log it.
+            
+            messages.success(request, 'Your message has been sent successfully! We will contact you soon.')
                 
             return redirect('core:contact')
     else:
