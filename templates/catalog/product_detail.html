@@ -2,13 +2,14 @@
 
 {% block title %}{{ product.name }} - Samar Craft Services{% endblock %}
 
-{% block meta_description %}{{ product.short_description|default:product.description|striptags|truncatewords:25 }}{%
-endblock %}
+{% block meta_description %}{{ product.short_description|default:product.description|striptags|truncatewords:25 }}
+{% endblock %}
 {% block meta_keywords %}stone services, {{ product.category.name|lower }}, {{ product.name|lower }}{% endblock %}
 
 {% block og_title %}{{ product.name }} - Samar Craft Services{% endblock %}
-{% block og_description %}{{ product.short_description|default:product.description|striptags|truncatewords:25 }}{%
-endblock %}
+{% block og_description %}
+{{ product.short_description|default:product.description|striptags|truncatewords:25 }}
+{% endblock %}
 {% block og_image %}{% if product.get_primary_image %}{{ product.get_primary_image.image.url }}{% else %}{{ block.super
 }}{% endif %}{% endblock %}
 
