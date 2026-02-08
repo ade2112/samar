@@ -8,8 +8,8 @@
 
 {% block og_title %}{{ post.title }} | Blog | Samar Construction{% endblock %}
 {% block og_description %}{{ post.excerpt|default:post.content|striptags|truncatewords:25 }}{% endblock %}
-{% block og_image %}{% if post.featured_image %}{{ post.featured_image.url }}{% else %}{{ block.super }}{% endif %}{%
-endblock %}
+{% block og_image %}{% if post.featured_image %}{{ post.featured_image.url }}{% else %}{{ block.super }}{% endif %}
+{% endblock %}
 
 {% block content %}
 <article class="section-padding">
