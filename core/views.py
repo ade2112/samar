@@ -28,31 +28,21 @@ def contact(request):
         if form.is_valid():
             inquiry = form.save()
             
-            # Send email notification
-            try:
-                subject = f"New Inquiry from {inquiry.name}: {inquiry.subject}"
-                message = f"""
-                You have received a new inquiry from the website.
+                # Email sending is temporarily disabled due to Render blocking SMTP ports.
+                # Inquiries are saved to the database (Admin panel).
+                # try:
+                #     send_mail(
+                #         subject,
+                #         message,
+                #         settings.DEFAULT_FROM_EMAIL,
+                #         [settings.EMAIL_HOST_USER], # Send to admin (same as host user for now)
+                #         fail_silently=False,
+                #     )
+                # except Exception as e:
+                #     print(f"EMAIL ERROR: {e}")
+                #     # Don't show error to user, just log it.
                 
-                Name: {inquiry.name}
-                Email: {inquiry.email}
-                Phone: {inquiry.phone}
-                Subject: {inquiry.subject}
-                
-                Message:
-                {inquiry.message}
-                """
-                send_mail(
-                    subject,
-                    message,
-                    settings.DEFAULT_FROM_EMAIL,
-                    [settings.EMAIL_HOST_USER], # Send to admin (same as host user for now)
-                    fail_silently=False,
-                )
                 messages.success(request, 'Your message has been sent successfully! We will contact you soon.')
-            except Exception as e:
-                print(f"EMAIL ERROR: {e}")
-                messages.warning(request, f'Your message was saved, but we could not send the email notification. Error: {e}')
                 
             return redirect('core:contact')
     else:
