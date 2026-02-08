@@ -47,7 +47,6 @@ def contact(request):
                     message,
                     settings.DEFAULT_FROM_EMAIL,
                     [settings.EMAIL_HOST_USER], # Send to admin (same as host user for now)
-                    [settings.EMAIL_HOST_USER], # Send to admin (same as host user for now)
                     fail_silently=False,
                 )
                 messages.success(request, 'Your message has been sent successfully! We will contact you soon.')
