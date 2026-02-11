@@ -63,3 +63,54 @@
 .content-wrapper .content-header h1 {
     font-weight: 300;
 }
+
+/* 
+   FORCE ALL TABS TO FLATTEN 
+   This hides the tab selector and forces all tab content to be visible simultaneously.
+*/
+
+/* Hide the tab navigation and pills */
+.nav-tabs,
+.nav-pills,
+.card-tabs .card-header {
+    display: none !important;
+}
+
+/* Force all tab panes to be visible and stacked */
+.tab-content>.tab-pane {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2rem;
+}
+
+/* Ensure active state doesn't interfere with visibility */
+.tab-content>.tab-pane:not(.active) {
+    display: block !important;
+}
+
+/* Add headers to sections if they are missing or hidden by tabs */
+.tab-pane::before {
+    content: attr(id);
+    /* Use the ID as a header if possible */
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    color: var(--primary);
+    border-left: 4px solid var(--primary);
+    padding-left: 10px;
+}
+
+/* Clean up the specific section names from IDs (e.g., 'productimage_set-group' -> 'Images') */
+.tab-pane[id*="set-group"]::before {
+    content: "Associated Images / Elements";
+}
+
+.tab-pane[id="general"]::before {
+    content: "General Information";
+}
