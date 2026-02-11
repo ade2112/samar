@@ -1,0 +1,14 @@
+/* Hide sidebar app labels/headers */
+.nav-sidebar .nav-header {
+    display: none !important;
+}
+
+/* Adjust sidebar spacing if needed */
+.nav-sidebar .nav-item {
+    margin-bottom: 2px;
+}
+
+/* Custom dashboard styles if needed */
+.content-wrapper .content-header h1 {
+    font-weight: 300;
+}

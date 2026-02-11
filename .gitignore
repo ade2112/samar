@@ -20,3 +20,10 @@ staticfiles/
 .DS_Store
 Thumbs.db
 .vscode/
+
+
+.db.sqlite3
+deployment_manual.docx
+image.png
+overflow.png
+images/
