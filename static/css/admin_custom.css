@@ -24,23 +24,29 @@
     padding-top: 0.5rem !important;
 }
 
-/* Navbar: Ensure user menu and Logout are on the right */
-.navbar-nav.ml-auto {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    width: 100%;
+/* Navbar: Ensure links don't wrap and have spacing */
+.navbar-nav .nav-link {
+    white-space: nowrap !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
 }
 
-/* Force the Logout link to the far right */
+/* Space out the top menu items */
+.navbar-nav .nav-item {
+    margin-right: 1rem !important;
+}
+
+/* Force the Logout link to the far right with extra margin */
+.navbar-nav .nav-item:has(i.fa-sign-out-alt),
 .navbar-nav .nav-item:last-child {
-    margin-left: auto !important;
+    margin-left: 3rem !important;
+    /* Push away from the home link */
 }
 
-/* Specific target for Logout if it has a specific icon or text */
-.navbar-nav .nav-link:contains("Logout"),
+/* Specific target for Logout color */
 .navbar-nav .nav-link i.fa-sign-out-alt {
     color: var(--danger) !important;
+    margin-right: 5px;
 }
 
 /* Custom dashboard styles if needed */
