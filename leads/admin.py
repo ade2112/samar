@@ -7,15 +7,6 @@ class InquiryAdmin(admin.ModelAdmin):
     list_filter = ['status', 'created_at']
     search_fields = ['name', 'email', 'phone', 'message']
     readonly_fields = ['name', 'email', 'phone', 'subject', 'message', 'created_at']
+    list_per_page = 20
     
-    fieldsets = (
-        ('Contact Information', {
-            'fields': ('name', 'email', 'phone')
-        }),
-        ('Message Details', {
-            'fields': ('subject', 'message', 'created_at')
-        }),
-        ('Management', {
-            'fields': ('status',)
-        }),
-    )
+    fields = ['name', 'email', 'phone', 'subject', 'message', 'status', 'created_at']

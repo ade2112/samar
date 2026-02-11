@@ -161,6 +161,9 @@ STORAGES = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+LOGIN_REDIRECT_URL = '/admin/'
+LOGOUT_REDIRECT_URL = '/admin/login/'
+
 # Jazzmin Settings
 JAZZMIN_SETTINGS = {
     "site_title": "Samar Admin",
@@ -173,7 +176,7 @@ JAZZMIN_SETTINGS = {
     "user_avatar": None,
     "topmenu_links": [
         {"name": "Samar Construction", "url": "admin:index", "permissions": ["auth.view_user"]}, 
-        {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt"}, # Request #3 Fixed
+        {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt"},
     ],
     "usermenu_links": [
         {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt"},
@@ -182,10 +185,10 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded": True,
     "hide_apps": ["sites"],
     "hide_models": [],
-    "order_with_respect_to": ["catalog", "portfolio", "blog", "leads", "auth"],
+    "order_with_respect_to": ["catalog", "portfolio", "blog", "leads", "core", "auth"],
     "custom_links": {
-        "catalog": [
-            {"name": "Recent Actions", "url": "/admin/core/logentry/", "icon": "fas fa-history"}, # Request #5 Fixed
+        "core": [
+            {"name": "Recent Actions", "url": "/admin/core/recentaction/", "icon": "fas fa-history"},
         ],
     },
     "icons": {
@@ -200,7 +203,6 @@ JAZZMIN_SETTINGS = {
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-circle",
     "show_ui_builder": False,
-    "changeform_format": "collapsible",
     "show_recent_actions": False, 
     "custom_css": "css/admin_custom.css", 
 }

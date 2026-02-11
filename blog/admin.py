@@ -9,3 +9,4 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     date_hierarchy = 'published_at'
     ordering = ('status', '-published_at')
+    list_per_page = 20

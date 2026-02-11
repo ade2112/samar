@@ -13,12 +13,6 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ['title', 'summary', 'location']
     prepopulated_fields = {'slug': ('title',)}
     inlines = [ProjectImageInline]
+    list_per_page = 20
     
-    fieldsets = (
-        ('Basic Information', {
-            'fields': ('title', 'slug', 'is_active')
-        }),
-        ('Project Details', {
-            'fields': ('summary', 'description', 'location', 'completed_date')
-        }),
-    )
+    fields = ['title', 'slug', 'is_active', 'summary', 'description', 'location', 'completed_date']

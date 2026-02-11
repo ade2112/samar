@@ -8,8 +8,8 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>View</h3>
-                    <p>Site SEO Sitemap</p>
+                    <h3>SEO</h3>
+                    <p>Site Indexing Sitemap</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-search"></i>
@@ -47,14 +47,13 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>Post</h3>
-                    <p>Blog Updates</p>
+                    <h3>Insights</h3>
+                    <p>Site Analytics & Traffic</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-newspaper"></i>
+                    <i class="fas fa-chart-line"></i>
                 </div>
-                <a href="{% url 'admin:blog_post_changelist' %}" class="small-box-footer">Write Now <i
-                        class="fas fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">View Analytics <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
@@ -62,7 +61,14 @@
     <!-- Original Content (Model Summary) Moved Below -->
     <div class="row">
         <div class="col-12">
-            {{ block.super }}
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Site Management Tables</h3>
+                </div>
+                <div class="card-body">
+                    {{ block.super }}
+                </div>
+            </div>
         </div>
     </div>
 </div>

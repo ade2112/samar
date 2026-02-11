@@ -22,15 +22,6 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['name', 'short_description', 'description']
     prepopulated_fields = {'slug': ('name',)}
     inlines = [ProductImageInline]
+    list_per_page = 20
     
-    fieldsets = (
-        ('Basic Information', {
-            'fields': ('name', 'slug', 'category', 'is_active')
-        }),
-        ('Description', {
-            'fields': ('short_description', 'description')
-        }),
-        ('Pricing', {
-            'fields': ('price_note',)
-        }),
-    )
+    fields = ['name', 'slug', 'category', 'is_active', 'short_description', 'description', 'price_note']

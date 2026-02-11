@@ -27,13 +27,20 @@
 /* Navbar: Ensure user menu and Logout are on the right */
 .navbar-nav.ml-auto {
     display: flex !important;
-    align-items: center;
+    flex-direction: row !important;
+    align-items: center !important;
+    width: 100%;
 }
 
-/* Force the Logout link in topmenu to the right */
-.navbar-nav .nav-item:has(.fa-sign-out-alt) {
+/* Force the Logout link to the far right */
+.navbar-nav .nav-item:last-child {
     margin-left: auto !important;
-    order: 10;
+}
+
+/* Specific target for Logout if it has a specific icon or text */
+.navbar-nav .nav-link:contains("Logout"),
+.navbar-nav .nav-link i.fa-sign-out-alt {
+    color: var(--danger) !important;
 }
 
 /* Dashboard cleanup: stronger selectors to hide Recent Actions */
