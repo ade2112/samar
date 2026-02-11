@@ -36,11 +36,10 @@
     margin-right: 1rem !important;
 }
 
-/* Force the Logout link to the far right with extra margin */
+/* Force the Logout link to the far right edge */
 .navbar-nav .nav-item:has(i.fa-sign-out-alt),
 .navbar-nav .nav-item:last-child {
-    margin-left: 3rem !important;
-    /* Push away from the home link */
+    margin-left: auto !important;
 }
 
 /* Specific target for Logout color */
