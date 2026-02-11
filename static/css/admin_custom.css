@@ -31,25 +31,40 @@
     padding-right: 1rem !important;
 }
 
-/* Space out the top menu items */
-.navbar-nav .nav-item {
-    margin-right: 1rem !important;
-}
-
-/* Navbar Alignment: Force "Logout" to the extreme right */
-.main-header .navbar-nav {
+/*
+   Navbar Layout Refinement:
+   Container 1 (Left): Toggler + Samar Construction
+   Container 2 (Right): Username + Logout
+*/
+.main-header.navbar {
     display: flex !important;
-    flex: 1 !important;
-    /* Make the list fill the available space */
+    justify-content: space-between !important;
+    align-items: center !important;
 }
 
-/* Push the LAST item (Logout) to the right */
-.main-header .navbar-nav .nav-item:last-child {
-    margin-left: auto !important;
+/* Container 1: Left Items */
+.main-header .navbar-nav:not(.ml-auto) {
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row !important;
+}
+
+/* Container 2: Right Items */
+.main-header .navbar-nav.ml-auto {
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row !important;
+    margin-left: 0 !important;
+    /* Let justify-content handle the gap */
+}
+
+/* Item Spacing within containers */
+.navbar-nav .nav-item {
+    padding: 0 10px !important;
 }
 
 /* Prevent title wrapping */
-.main-header .navbar-nav .nav-link {
+.navbar-nav .nav-link {
     white-space: nowrap !important;
 }
 
