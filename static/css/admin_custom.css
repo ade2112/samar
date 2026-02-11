@@ -3,7 +3,18 @@
     display: none !important;
 }
 
-/* Adjust sidebar spacing if needed */
+/* Request #4: Hide sidebar branding and user panel */
+.main-sidebar .brand-link,
+.main-sidebar .user-panel {
+    display: none !important;
+}
+
+/* Reduce top padding of sidebar since header is gone */
+.main-sidebar .sidebar {
+    padding-top: 1rem !important;
+}
+
+/* Adjust sidebar spacing */
 .nav-sidebar .nav-item {
     margin-bottom: 2px;
 }

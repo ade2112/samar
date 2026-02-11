@@ -169,12 +169,10 @@ JAZZMIN_SETTINGS = {
     "site_logo": None,
     "welcome_sign": "Welcome to Samar",
     "copyright": "Samar Construction Ltd",
-    "search_model": ["catalog.Product", "portfolio.Project"],
+    "search_model": [],  # Request #2: Remove search bars
     "user_avatar": None,
     "topmenu_links": [
-        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Recent Actions", "url": "/admin/admin/logentry/", "icon": "fas fa-history"},
-        {"name": "Analytics", "url": "#", "icon": "fas fa-chart-line"}, # Placeholder for Request #3
+        {"name": "Samar Construction", "url": "admin:index", "permissions": ["auth.view_user"]}, # Request #1
     ],
     "usermenu_links": [
         {"name": "Logout", "url": "admin:logout", "icon": "fas fa-sign-out-alt"},
@@ -186,7 +184,7 @@ JAZZMIN_SETTINGS = {
     "order_with_respect_to": ["catalog", "portfolio", "blog", "leads", "auth"],
     "custom_links": {
         "catalog": [
-            {"name": "Recent Actions", "url": "/admin/admin/logentry/", "icon": "fas fa-history"},
+            {"name": "Recent Actions", "url": "admin:admin_logentry_changelist", "icon": "fas fa-history"}, # Request #5 Fixed
         ],
     },
     "icons": {
@@ -202,8 +200,8 @@ JAZZMIN_SETTINGS = {
     "default_icon_children": "fas fa-circle",
     "show_ui_builder": False,
     "changeform_format": "horizontal_tabs",
-    "show_recent_actions": False,  # Request #4: Remove from main dashboard
-    "custom_css": "static/css/admin_custom.css", # To handle Request #5
+    "show_recent_actions": False, 
+    "custom_css": "css/admin_custom.css", 
 }
 
 JAZZMIN_UI_CONFIG = {

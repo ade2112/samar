@@ -1,0 +1,81 @@
+{% extends "admin/index.html" %}
+{% load i18n static %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Request #6: Admin Insights Section -->
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>View</h3>
+                    <p>Site SEO Sitemap</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="/sitemap.xml" target="_blank" class="small-box-footer">Check Indexing <i
+                        class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>Active</h3>
+                    <p>Product Catalog</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <a href="{% url 'admin:catalog_product_changelist' %}" class="small-box-footer">Manage Products <i
+                        class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>New</h3>
+                    <p>Recent Inquiries</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <a href="{% url 'admin:leads_inquiry_changelist' %}" class="small-box-footer">View Leads <i
+                        class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3>Post</h3>
+                    <p>Blog Updates</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <a href="{% url 'admin:blog_post_changelist' %}" class="small-box-footer">Write Now <i
+                        class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Original Content (Model Summary) Moved Below -->
+    <div class="row">
+        <div class="col-12">
+            {{ block.super }}
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Clean up the transition between custom cards and default content */
+    .content-wrapper .content {
+        padding-top: 15px;
+    }
+
+    /* Request #6: Ensure recent actions in main dashboard is hidden if not already by settings */
+    #content-main .card.card-outline.card-primary:has(.fa-history) {
+        display: none !important;
+    }
+</style>
+{% endblock %}
