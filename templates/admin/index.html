@@ -74,16 +74,17 @@
     }
 
     /* Request #6: Explicitly hide any 'Recent Actions' headers or blocks in main dashboard */
-    .content-wrapper #content-main h2:contains("Recent actions"),
     .content-wrapper #content-main .card:has(.fa-history),
-    .content-wrapper .col-md-3 #content-related,
-    .content-wrapper .col-lg-3 #content-related {
+    .content-wrapper #content-related,
+    .content-wrapper .col-md-3,
+    .content-wrapper .col-lg-3 {
         display: none !important;
     }
 
-    /* Ensure the model summary takes full width if recent actions sidebar is gone */
-    #content-main.col-md-9,
-    #content-main.col-lg-9 {
+    /* Ensure the model summary takes full width */
+    #content-main,
+    .content-wrapper .col-md-9,
+    .content-wrapper .col-lg-9 {
         flex: 0 0 100% !important;
         max-width: 100% !important;
     }

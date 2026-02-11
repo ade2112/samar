@@ -173,10 +173,10 @@ JAZZMIN_SETTINGS = {
     "user_avatar": None,
     "topmenu_links": [
         {"name": "Samar Construction", "url": "admin:index", "permissions": ["auth.view_user"]}, 
-        {"name": "Logout", "url": "admin:logout", "icon": "fas fa-sign-out-alt"}, # Request #3: Highly visible logout
+        {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt"}, # Request #3 Fixed
     ],
     "usermenu_links": [
-        {"name": "Logout", "url": "admin:logout", "icon": "fas fa-sign-out-alt"},
+        {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt"},
     ],
     "show_sidebar": True,
     "navigation_expanded": True,
@@ -185,7 +185,7 @@ JAZZMIN_SETTINGS = {
     "order_with_respect_to": ["catalog", "portfolio", "blog", "leads", "auth"],
     "custom_links": {
         "catalog": [
-            {"name": "Recent Actions", "url": "/admin/admin/logentry/", "icon": "fas fa-history"}, # Request #5 Fixed with hard path
+            {"name": "Recent Actions", "url": "/admin/core/logentry/", "icon": "fas fa-history"}, # Request #5 Fixed
         ],
     },
     "icons": {
@@ -200,7 +200,7 @@ JAZZMIN_SETTINGS = {
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-circle",
     "show_ui_builder": False,
-    "changeform_format": "horizontal_tabs",
+    "changeform_format": "collapsible",
     "show_recent_actions": False, 
     "custom_css": "css/admin_custom.css", 
 }

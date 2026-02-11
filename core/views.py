@@ -4,6 +4,7 @@ from portfolio.models import Project
 from catalog.models import Product
 from leads.forms import ContactForm
 from django.contrib import messages
+from django.contrib.auth import logout as auth_logout
 from django.core.mail import send_mail
 from django.conf import settings
 from django.urls import reverse
@@ -83,3 +84,7 @@ def seo_dashboard(request):
         links.append({'name': f'Featured Product: {latest_prod.name}', 'url': reverse('catalog:product_detail', args=[latest_prod.slug])})
 
     return render(request, 'core/seo_dashboard.html', {'links': links})
+
+def logout_view(request):
+    auth_logout(request)
+    return redirect('admin:login')

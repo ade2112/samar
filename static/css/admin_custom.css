@@ -24,9 +24,32 @@
     padding-top: 0.5rem !important;
 }
 
-/* Navbar: Ensure user menu is visible */
+/* Navbar: Ensure user menu and Logout are on the right */
 .navbar-nav.ml-auto {
     display: flex !important;
+    align-items: center;
+}
+
+/* Force the Logout link in topmenu to the right */
+.navbar-nav .nav-item:has(.fa-sign-out-alt) {
+    margin-left: auto !important;
+    order: 10;
+}
+
+/* Dashboard cleanup: stronger selectors to hide Recent Actions */
+.dashboard #content-related,
+.dashboard .col-md-3:has(#content-related),
+.dashboard .col-lg-3:has(#content-related),
+.dashboard h2:contains("Recent actions") {
+    display: none !important;
+}
+
+/* Ensure model summary is full width */
+.dashboard #content-main,
+.dashboard .col-md-9:has(#content-main),
+.dashboard .col-lg-9:has(#content-main) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
 }
 
 /* Custom dashboard styles if needed */
