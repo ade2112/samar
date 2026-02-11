@@ -43,41 +43,26 @@
     color: var(--danger) !important;
 }
 
-/* Dashboard cleanup: stronger selectors to hide Recent Actions */
-.dashboard #content-related,
-.dashboard .col-md-3:has(#content-related),
-.dashboard .col-lg-3:has(#content-related),
-.dashboard h2:contains("Recent actions") {
-    display: none !important;
-}
-
-/* Ensure model summary is full width */
-.dashboard #content-main,
-.dashboard .col-md-9:has(#content-main),
-.dashboard .col-lg-9:has(#content-main) {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
-}
-
 /* Custom dashboard styles if needed */
 .content-wrapper .content-header h1 {
     font-weight: 300;
 }
 
-/* 
-   FORCE ALL TABS TO FLATTEN 
+/*
+   FORCE ALL TABS TO FLATTEN
    This hides the tab selector and forces all tab content to be visible simultaneously.
+   SCOPED to the content area to avoid hiding the sidebar navigation.
 */
 
-/* Hide the tab navigation and pills */
-.nav-tabs,
-.nav-pills,
-.card-tabs .card-header {
+/* Hide the tab navigation and pills ONLY in the content area */
+.content-wrapper .nav-tabs,
+.content-wrapper .nav-pills:not(.nav-sidebar .nav-pills),
+.content-wrapper .card-tabs .card-header {
     display: none !important;
 }
 
-/* Force all tab panes to be visible and stacked */
-.tab-content>.tab-pane {
+/* Force all tab panes in the content area to be visible and stacked */
+.content-wrapper .tab-content>.tab-pane {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
@@ -88,14 +73,13 @@
 }
 
 /* Ensure active state doesn't interfere with visibility */
-.tab-content>.tab-pane:not(.active) {
+.content-wrapper .tab-content>.tab-pane:not(.active) {
     display: block !important;
 }
 
-/* Add headers to sections if they are missing or hidden by tabs */
-.tab-pane::before {
+/* Add headers to sections */
+.content-wrapper .tab-pane::before {
     content: attr(id);
-    /* Use the ID as a header if possible */
     display: block;
     font-size: 1.2rem;
     font-weight: bold;
@@ -106,11 +90,20 @@
     padding-left: 10px;
 }
 
-/* Clean up the specific section names from IDs (e.g., 'productimage_set-group' -> 'Images') */
-.tab-pane[id*="set-group"]::before {
-    content: "Associated Images / Elements";
+/* Clean up labels */
+.content-wrapper .tab-pane[id*="set-group"]::before {
+    content: "Associated Images / Media Elements";
 }
 
-.tab-pane[id="general"]::before {
+.content-wrapper .tab-pane[id="general"]::before {
     content: "General Information";
+}
+
+/* Sidebar Restoration Fix: Ensure .nav-sidebar .nav-pills is visible */
+.main-sidebar .nav-pills {
+    display: flex !important;
+}
+
+.main-sidebar .nav-item {
+    display: list-item !important;
 }

@@ -78,21 +78,5 @@
     .content-wrapper .content {
         padding-top: 15px;
     }
-
-    /* Request #6: Explicitly hide any 'Recent Actions' headers or blocks in main dashboard */
-    .content-wrapper #content-main .card:has(.fa-history),
-    .content-wrapper #content-related,
-    .content-wrapper .col-md-3,
-    .content-wrapper .col-lg-3 {
-        display: none !important;
-    }
-
-    /* Ensure the model summary takes full width */
-    #content-main,
-    .content-wrapper .col-md-9,
-    .content-wrapper .col-lg-9 {
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
-    }
 </style>
 {% endblock %}
