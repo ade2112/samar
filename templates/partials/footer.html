@@ -1,10 +1,14 @@
+{% load static %}
 <footer>
     <div class="container">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem;">
             <div>
-                <h2
-                    style="font-size: 1.2rem; letter-spacing: 0.2em; color: var(--accent-color); margin-bottom: 1.5rem;">
-                    SAMAR CONSTRUCTION</h2>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+                    <img src="{% static 'images/logo.png' %}" alt="Samar Construction Logo"
+                        style="height: 30px; width: auto;">
+                    <h2 style="font-size: 1.2rem; letter-spacing: 0.2em; color: var(--accent-color); margin: 0;">
+                        SAMAR CONSTRUCTION</h2>
+                </div>
                 <p style="color: #aaa; font-size: 0.9rem;">Official construction and architectural services provider
                     based in Perak.</p>
             </div>

@@ -43,8 +43,7 @@
             <div class="lux-card">
                 <div style="height: 300px; margin-bottom: 2rem; overflow: hidden; position: relative;">
                     {% if product.get_primary_image %}
-                    <img src="{{ product.get_primary_image.image.url }}" alt="{{ product.name }}"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="{{ product.get_primary_image.image.url }}" alt="{{ product.name }}" class="img-card">
                     {% else %}
                     <div
                         style="width: 100%; height: 100%; background: #ddd; display: flex; align-items: center; justify-content: center;">
@@ -93,8 +92,8 @@
             <div class="lux-card">
                 <div style="height: 300px; margin-bottom: 1.5rem; overflow: hidden; position: relative;">
                     {% if project.get_primary_image %}
-                    <img src="{{ project.get_primary_image.image.url }}" alt="{{ project.title }}"
-                        style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                    <img src="{{ project.get_primary_image.image.url }}" alt="{{ project.title }}" class="img-card"
+                        style="transition: transform 0.5s;">
                     {% else %}
                     <div
                         style="width: 100%; height: 100%; background: #ddd; display: flex; align-items: center; justify-content: center;">
@@ -125,10 +124,10 @@
 </section>
 
 <!-- Mission/Transform Section -->
-<section style="background: var(--section-bg); padding: 10rem 0;">
+<section style="background: var(--section-bg); padding: 10rem 0; overflow-x: hidden;">
     <div class="container">
         <div
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); gap: 6rem; align-items: center;">
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 6rem; align-items: center;">
             <div>
                 <h4
                     style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-color); font-size: 0.8rem; margin-bottom: 1.5rem;">
@@ -141,9 +140,8 @@
                     through bespoke sculptures and installations.</p>
                 <a href="{% url 'core:about' %}" class="btn btn-primary">Our Story</a>
             </div>
-            <div style="position: relative;">
-                <img src="{% static 'images/hero.png' %}" alt="Craftsmanship"
-                    style="width: 100%; height: 600px; object-fit: cover; box-shadow: 40px 40px 0 var(--bg-color);">
+            <div class="img-offset-wrapper">
+                <img src="{% static 'images/hero.png' %}" alt="Craftsmanship" class="img-detail">
             </div>
         </div>
     </div>
@@ -165,11 +163,9 @@
             <div class="lux-card">
                 <div style="height: 250px; background: #eee; margin-bottom: 2rem; overflow: hidden;">
                     {% if post.featured_image %}
-                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-card">
                     {% else %}
-                    <img src="{% static 'images/art_panel.png' %}" alt="Blog Post"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="{% static 'images/art_panel.png' %}" alt="Blog Post" class="img-card">
                     {% endif %}
                 </div>
                 <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">{{ post.title }}</h3>

@@ -188,6 +188,39 @@ label {
     transition: all 0.3s ease;
 }
 
+/* Image Utilities */
+.img-card {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    width: 100%;
+}
+
+.img-detail {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Offset Image Wrapper (Fixed for overflow) */
+.img-offset-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.img-offset-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    border: 1px solid #eee;
+    z-index: -1;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .container {
@@ -231,20 +264,36 @@ label {
     }
 
     h1 {
-        font-size: 2rem !important;
-    }
-
-    .hero-section h1 {
         font-size: 1.8rem !important;
     }
 
-    .section-padding {
-        padding: 3rem 0 !important;
+    h2 {
+        font-size: 1.5rem !important;
     }
 
-    /* Fix grid for small screens */
-    .lux-card img {
-        height: 250px;
+    .hero-section {
+        height: 60vh !important;
+        /* Shorter hero on mobile */
+    }
+
+    .hero-section h1 {
+        font-size: 1.6rem !important;
+    }
+
+    .section-padding {
+        padding: 4rem 0 !important;
+    }
+
+    /* Standardize image aspect ratios for mobile */
+    .lux-card img,
+    .img-card {
+        aspect-ratio: 3 / 2;
+        height: auto !important;
+    }
+
+    .img-detail {
+        aspect-ratio: 4 / 3;
+        height: auto !important;
     }
 
     /* Fix overflow issues */
@@ -254,5 +303,18 @@ label {
         width: 100%;
         padding-left: 0;
         padding-right: 0;
+    }
+
+    /* Grid Gaps - Fixes the reported overflow from large gaps */
+    div[style*="gap: 6rem"],
+    div[style*="gap: 4rem"],
+    div[style*="gap: 3rem"] {
+        gap: 2rem !important;
+    }
+
+    /* Reduce offset for mobile */
+    .img-offset-wrapper::after {
+        top: 15px;
+        left: 15px;
     }
 }

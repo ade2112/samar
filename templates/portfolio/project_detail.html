@@ -3,8 +3,9 @@
 {% block title %}{{ project.title }} - Samar Craft Projects{% endblock %}
 
 {% block meta_description %}{{ project.summary|default:project.description|striptags|truncatewords:25 }}{% endblock %}
-{% block meta_keywords %}stone projects, portfolio, {{ project.location|lower }}, {{ project.title|lower }}{% endblock
-%}
+{% block meta_keywords %}
+stone projects, portfolio, {{ project.location|lower }}, {{ project.title|lower }}
+{% endblock %}
 
 {% block og_title %}{{ project.title }} - Samar Craft Projects{% endblock %}
 {% block og_description %}{{ project.summary|default:project.description|striptags|truncatewords:25 }}{% endblock %}
@@ -29,15 +30,14 @@
             <div>
                 {% if project.images.all %}
                 <div id="main-image" style="margin-bottom: 1rem;">
-                    <img src="{{ project.get_primary_image.image.url }}" alt="{{ project.title }}"
-                        style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
+                    <img src="{{ project.get_primary_image.image.url }}" alt="{{ project.title }}" class="img-detail">
                 </div>
 
                 {% if project.images.count > 1 %}
                 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem;">
                     {% for image in project.images.all %}
                     <img src="{{ image.image.url }}" alt="{{ project.title }}"
-                        onclick="document.getElementById('main-image').innerHTML='<img src=\'{{ image.image.url }}\' alt=\'{{ project.title }}\' style=\'width: 100%; height: 400px; object-fit: cover; border-radius: 8px;\'>'"
+                        onclick="document.getElementById('main-image').innerHTML='<img src=\'{{ image.image.url }}\' alt=\'{{ project.title }}\' class=\'img-detail\'>'"
                         style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid {% if image.is_primary %}var(--primary-color){% else %}transparent{% endif %};">
                     {% endfor %}
                 </div>

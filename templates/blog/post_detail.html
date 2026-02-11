@@ -26,11 +26,11 @@
             </header>
 
             {% if post.featured_image %}
-            <img src="{{ post.featured_image.url }}" alt="{{ post.title }}"
-                style="width: 100%; height: 600px; object-fit: cover; margin-bottom: 4rem;">
+            <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="img-detail"
+                style="margin-bottom: 4rem;">
             {% else %}
-            <img src="{% static 'images/hero.png' %}" alt="Blog Featured Image"
-                style="width: 100%; height: 600px; object-fit: cover; margin-bottom: 4rem;">
+            <img src="{% static 'images/hero.png' %}" alt="Blog Featured Image" class="img-detail"
+                style="margin-bottom: 4rem;">
             {% endif %}
 
             <div class="blog-content" style="font-size: 1.1rem; line-height: 1.8;">

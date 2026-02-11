@@ -1,16 +1,21 @@
+{% load static %}
 <header>
         <nav class="container" style="display: flex; justify-content: space-between; align-items: center;">
                 <div class="logo">
-                        <a href="{% url 'core:home' %}" style="text-decoration: none;">
-                                <h1 style="margin: 0; color: var(--primary-color); font-size: 1.3rem; letter-spacing: 0.2em;">
+                        <a href="{% url 'core:home' %}"
+                                style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                                <img src="{% static 'images/logo.png' %}" alt="Samar Construction Logo"
+                                        style="height: 40px; width: auto;">
+                                <h1
+                                        style="margin: 0; color: var(--primary-color); font-size: 1.3rem; letter-spacing: 0.2em;">
                                         SAMAR CONSTRUCTION</h1>
                         </a>
                 </div>
-                
+
                 <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
                 </button>
 
                 <ul class="nav-menu">
