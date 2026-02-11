@@ -6,6 +6,11 @@ from leads.forms import ContactForm
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from django.urls import reverse
+from django.contrib.auth.decorators import user_passes_test
+
+def is_admin(user):
+    return user.is_staff
 
 def home(request):
     latest_posts = Post.objects.filter(status='PUBLISHED').order_by('-published_at')[:3]
@@ -52,3 +57,29 @@ def contact(request):
 
 def testimonials(request):
     return render(request, 'core/testimonials.html')
+
+@user_passes_test(is_admin)
+def seo_dashboard(request):
+    """
+    A human-readable sitemap/SEO dashboard for admins.
+    """
+    links = [
+        {'name': 'Homepage', 'url': reverse('core:home')},
+        {'name': 'About Us', 'url': reverse('core:about')},
+        {'name': 'Contact', 'url': reverse('core:contact')},
+        {'name': 'Testimonials', 'url': reverse('core:testimonials')},
+        {'name': 'Blog List', 'url': reverse('blog:post_list')},
+        {'name': 'Services/Products', 'url': reverse('catalog:product_list')},
+        {'name': 'Projects Portfolio', 'url': reverse('portfolio:project_list')},
+    ]
+    
+    # Add some dynamic examples
+    latest_post = Post.objects.filter(status='PUBLISHED').first()
+    if latest_post:
+        links.append({'name': f'Latest Post: {latest_post.title}', 'url': reverse('blog:post_detail', args=[latest_post.slug])})
+        
+    latest_prod = Product.objects.filter(is_active=True).first()
+    if latest_prod:
+        links.append({'name': f'Featured Product: {latest_prod.name}', 'url': reverse('catalog:product_detail', args=[latest_prod.slug])})
+
+    return render(request, 'core/seo_dashboard.html', {'links': links})

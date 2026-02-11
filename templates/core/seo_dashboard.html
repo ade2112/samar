@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}SEO Sitemap Dashboard | Samar Construction{% endblock %}
+
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <div style="margin-bottom: 3rem;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">SEO Sitemap Dashboard</h1>
+            <p style="color: var(--light-text);">A human-readable list of all indexed pages on Samar Construction.</p>
+        </div>
+
+        <div
+            style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="text-align: left; border-bottom: 2px solid var(--accent-color);">
+                        <th style="padding: 1rem;">Page Name</th>
+                        <th style="padding: 1rem;">URL Path</th>
+                        <th style="padding: 1rem;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for link in links %}
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 1rem; font-weight: 500;">{{ link.name }}</td>
+                        <td style="padding: 1rem; font-family: monospace; color: var(--light-text);">{{ link.url }}</td>
+                        <td style="padding: 1rem;">
+                            <a href="{{ link.url }}" target="_blank"
+                                style="color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: 600;">Visit
+                                Page &rarr;</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <a href="{% url 'admin:index' %}" class="btn btn-outline" style="font-size: 0.9rem;">Back to Admin
+                Dashboard</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

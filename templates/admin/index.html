@@ -14,7 +14,7 @@
                 <div class="icon">
                     <i class="fas fa-search"></i>
                 </div>
-                <a href="/sitemap.xml" target="_blank" class="small-box-footer">Check Indexing <i
+                <a href="{% url 'core:seo_dashboard' %}" class="small-box-footer">Check Indexing <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -73,9 +73,19 @@
         padding-top: 15px;
     }
 
-    /* Request #6: Ensure recent actions in main dashboard is hidden if not already by settings */
-    #content-main .card.card-outline.card-primary:has(.fa-history) {
+    /* Request #6: Explicitly hide any 'Recent Actions' headers or blocks in main dashboard */
+    .content-wrapper #content-main h2:contains("Recent actions"),
+    .content-wrapper #content-main .card:has(.fa-history),
+    .content-wrapper .col-md-3 #content-related,
+    .content-wrapper .col-lg-3 #content-related {
         display: none !important;
+    }
+
+    /* Ensure the model summary takes full width if recent actions sidebar is gone */
+    #content-main.col-md-9,
+    #content-main.col-lg-9 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
     }
 </style>
 {% endblock %}

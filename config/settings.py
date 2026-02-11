@@ -172,7 +172,8 @@ JAZZMIN_SETTINGS = {
     "search_model": [],  # Request #2: Remove search bars
     "user_avatar": None,
     "topmenu_links": [
-        {"name": "Samar Construction", "url": "admin:index", "permissions": ["auth.view_user"]}, # Request #1
+        {"name": "Samar Construction", "url": "admin:index", "permissions": ["auth.view_user"]}, 
+        {"name": "Logout", "url": "admin:logout", "icon": "fas fa-sign-out-alt"}, # Request #3: Highly visible logout
     ],
     "usermenu_links": [
         {"name": "Logout", "url": "admin:logout", "icon": "fas fa-sign-out-alt"},
@@ -184,7 +185,7 @@ JAZZMIN_SETTINGS = {
     "order_with_respect_to": ["catalog", "portfolio", "blog", "leads", "auth"],
     "custom_links": {
         "catalog": [
-            {"name": "Recent Actions", "url": "admin:admin_logentry_changelist", "icon": "fas fa-history"}, # Request #5 Fixed
+            {"name": "Recent Actions", "url": "/admin/admin/logentry/", "icon": "fas fa-history"}, # Request #5 Fixed with hard path
         ],
     },
     "icons": {

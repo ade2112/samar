@@ -9,14 +9,24 @@
     display: none !important;
 }
 
-/* Reduce top padding of sidebar since header is gone */
-.main-sidebar .sidebar {
-    padding-top: 1rem !important;
+/* Hide the user name explicitly if it stays */
+.main-sidebar .info {
+    display: none !important;
 }
 
-/* Adjust sidebar spacing */
-.nav-sidebar .nav-item {
-    margin-bottom: 2px;
+/* Hide the 'Django Administration' text if it persists in some sub-views */
+.sidebar .brand-text {
+    display: none !important;
+}
+
+/* Reduce top padding of sidebar */
+.main-sidebar .sidebar {
+    padding-top: 0.5rem !important;
+}
+
+/* Navbar: Ensure user menu is visible */
+.navbar-nav.ml-auto {
+    display: flex !important;
 }
 
 /* Custom dashboard styles if needed */
