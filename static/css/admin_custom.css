@@ -62,14 +62,22 @@
 }
 
 /* Force all tab panes in the content area to be visible and stacked */
-.content-wrapper .tab-content>.tab-pane {
+.content-wrapper .tab-content>.tab-pane,
+.content-wrapper .tab-pane {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     position: relative !important;
     margin-bottom: 2rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
     padding-bottom: 2rem;
+}
+
+/* Specific fix for Jazzmin horizontal/vertical inlines */
+.content-wrapper .inline-group .nav-tabs-custom,
+.content-wrapper .inline-group .tab-content {
+    border: none !important;
+    box-shadow: none !important;
 }
 
 /* Ensure active state doesn't interfere with visibility */
@@ -79,24 +87,26 @@
 
 /* Add headers to sections */
 .content-wrapper .tab-pane::before {
-    content: attr(id);
+    content: "Section Data";
     display: block;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-transform: capitalize;
-    color: var(--primary);
-    border-left: 4px solid var(--primary);
-    padding-left: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    background: #f8f9fa;
+    border-left: 5px solid var(--primary);
+    color: #333;
+    border-radius: 0 4px 4px 0;
 }
 
-/* Clean up labels */
+/* Clean up labels based on IDs */
 .content-wrapper .tab-pane[id*="set-group"]::before {
-    content: "Associated Images / Media Elements";
+    content: "📁 Associated Media & Images";
 }
 
-.content-wrapper .tab-pane[id="general"]::before {
-    content: "General Information";
+.content-wrapper .tab-pane[id*="general"]::before,
+.content-wrapper .tab-pane[id*="basic"]::before {
+    content: "📝 General Information";
 }
 
 /* Sidebar Restoration Fix: Ensure .nav-sidebar .nav-pills is visible */

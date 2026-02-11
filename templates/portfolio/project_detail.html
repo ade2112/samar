@@ -54,8 +54,9 @@ stone projects, portfolio, {{ project.location|lower }}, {{ project.title|lower 
             <div>
                 <h1 style="margin-bottom: 0.5rem;">{{ project.title }}</h1>
                 {% if project.location %}
-                <p style="color: var(--primary-color); font-size: 1.1rem; margin-bottom: 1rem;">📍 {{ project.location
-                    }}</p>
+                <p style="color: var(--primary-color); font-size: 1.1rem; margin-bottom: 1rem;">
+                    📍 {{ project.location }}
+                </p>
                 {% endif %}
 
                 <p style="font-size: 1.1rem; color: #666; margin-bottom: 1.5rem;">{{ project.summary }}</p>

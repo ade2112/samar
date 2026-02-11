@@ -188,7 +188,7 @@ JAZZMIN_SETTINGS = {
     "order_with_respect_to": ["catalog", "portfolio", "blog", "leads", "core", "auth"],
     "custom_links": {
         "core": [
-            {"name": "Recent Actions", "url": "/admin/core/recentaction/", "icon": "fas fa-history"},
+            {"name": "Recent Actions", "url": "/admin/admin/logentry/", "icon": "fas fa-history"},
         ],
     },
     "icons": {
