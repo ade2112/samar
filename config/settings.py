@@ -101,6 +101,20 @@ DATABASES = {
     )
 }
 
+# Force IPv4 for Supabase on Render
+# Render sometimes resolves Supabase domains to IPv6 which fails with "Network is unreachable"
+if DATABASES['default'] and 'HOST' in DATABASES['default'] and 'supabase.co' in DATABASES['default']['HOST']:
+    import socket
+    try:
+        # Resolve the hostname to an IPv4 address
+        original_host = DATABASES['default']['HOST']
+        if not original_host.replace('.', '').isdigit(): # Don't resolve if already an IP
+             ipv4_address = socket.gethostbyname(original_host)
+             print(f"DEBUG: Resolved {original_host} to {ipv4_address}")
+             DATABASES['default']['HOST'] = ipv4_address
+    except socket.gaierror:
+        print(f"WARNING: Could not resolve {DATABASES['default']['HOST']} to IPv4")
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
