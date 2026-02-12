@@ -1,16 +1,21 @@
 # Virtual environment
 venv/
 .venv/
+env/
+dist/
+build/
 
 # Python cache
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
 
 # Django
 *.sqlite3
 media/
 staticfiles/
+db.sqlite3
 
 # Environment variables
 .env
@@ -20,10 +25,20 @@ staticfiles/
 .DS_Store
 Thumbs.db
 .vscode/
+.idea/
+.project
+.pydevproject
 
-
-.db.sqlite3
-deployment_manual.docx
-image.png
-overflow.png
+# Custom Samar Project Files
+catalogues/
 images/
+docs/
+deployment_manual.docx
+repair_base.py
+fix_static.py
+main.py
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.docx
