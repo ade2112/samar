@@ -180,9 +180,11 @@ JAZZMIN_SETTINGS = {
     "user_avatar": None,
     "topmenu_links": [
         {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
-        # {"name": "View Site", "url": "/", "new_window": True},
+        {"name": "View Site", "url": "/", "new_window": True},
+        {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt", "classes": "ml-auto"},
     ],
     "usermenu_links": [
+        {"name": "Profile", "url": "/admin/auth/user/", "icon": "fas fa-user"},
         {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt"},
     ],
     "show_sidebar": True,
