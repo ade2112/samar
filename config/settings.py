@@ -167,16 +167,20 @@ LOGOUT_REDIRECT_URL = '/admin/login/'
 # Jazzmin Settings
 JAZZMIN_SETTINGS = {
     "site_title": "Samar Admin",
-    "site_header": "Samar",
-    "site_brand": "Samar",
-    "site_logo": None,
-    "welcome_sign": "Welcome to Samar",
+    "site_header": "Samar Construction",
+    "site_brand": "Samar Admin",
+    "site_logo": "images/logo.png",
+    "login_logo": "images/logo.png",
+    "login_logo_dark": False,
+    "site_logo_classes": "img-circle elevation-3",
+    "site_icon": "images/logo.png",
+    "welcome_sign": "Welcome to Samar Admin",
     "copyright": "Samar Construction Ltd",
-    "search_model": [],  # Request #2: Remove search bars
+    "search_model": "auth.User",
     "user_avatar": None,
     "topmenu_links": [
-        {"name": "Samar Construction", "url": "admin:index", "permissions": ["auth.view_user"]}, 
-        {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt"},
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "View Site", "url": "/", "new_window": True},
     ],
     "usermenu_links": [
         {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt"},
