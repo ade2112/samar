@@ -94,8 +94,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+    'default': dj_database_url.parse(
+        config('DATABASE_URL', default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"),
         conn_max_age=600,
         ssl_require=not DEBUG if config('DATABASE_URL', default=None) else False
     )
@@ -176,11 +176,11 @@ JAZZMIN_SETTINGS = {
     "site_icon": "images/logo.png",
     "welcome_sign": "Welcome to Samar Admin",
     "copyright": "Samar Construction Ltd",
-    "search_model": "auth.User",
+    # "search_model": "auth.User",
     "user_avatar": None,
     "topmenu_links": [
         {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "View Site", "url": "/", "new_window": True},
+        # {"name": "View Site", "url": "/", "new_window": True},
     ],
     "usermenu_links": [
         {"name": "Logout", "url": "core:logout", "icon": "fas fa-sign-out-alt"},
@@ -190,11 +190,11 @@ JAZZMIN_SETTINGS = {
     "hide_apps": ["sites"],
     "hide_models": [],
     "order_with_respect_to": ["catalog", "portfolio", "blog", "leads", "core", "auth"],
-    "custom_links": {
-        "core": [
-            {"name": "Recent Actions", "url": "/admin/admin/logentry/", "icon": "fas fa-history"},
-        ],
-    },
+    # "custom_links": {
+    #     "core": [
+    #         {"name": "Recent Actions", "url": "/admin/admin/logentry/", "icon": "fas fa-history"},
+    #     ],
+    # },
     "icons": {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
